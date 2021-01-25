@@ -7,6 +7,90 @@
     <groupId>springmvc</groupId>
     <artifactId>springmvc_test01</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>      <!--这个位置要打war包不然的话就会启动不成功-->
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <spring.version>5.0.2.RELEASE</spring.version>
+
+    </properties>
+
+    <dependencies>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-web</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-webmvc</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>servlet-api</artifactId>
+                <version>2.5</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>javax.servlet.jsp</groupId>
+                <artifactId>jsp-api</artifactId>
+                <version>2.0</version>
+                <scope>provided</scope>
+            </dependency>
 
 
+        <!--这一个是解析文件的jar包,不管是是使用什么文件解析方式
+            这个jar包都要导入，不然的话就会报错-->
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>1.3.1</version>
+        </dependency>
+
+        <!--进行跨服务器文件的上传-->
+        <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-core</artifactId>
+            <version>1.18.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-client</artifactId>
+            <version>1.18.1</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+
+
+             <plugin>
+                 <groupId>org.apache.tomcat.maven</groupId>
+                 <artifactId>tomcat7-maven-plugin</artifactId>
+                 <version>2.2</version>
+                 <configuration>
+                     <url>http://42.224.204.38:80/</url>
+                     <server>tomcat7</server>
+                     <username>tomcat</username>
+                     <password>tomcat</password>
+                     <port>80</port>
+                     <path>/blog</path>
+                 </configuration>
+             </plugin>
+
+
+        </plugins>
+    </build>
 </project>
